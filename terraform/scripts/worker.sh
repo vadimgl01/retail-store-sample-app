@@ -1,0 +1,44 @@
+#!/bin/bash -xe
+
+echo "==== WORKER START ===-"
+
+# BUCKET variable is assumed to be exported by the Terraform user_data environment.
+
+# Automatically detect AWS Region using instance metadata
+TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+export AWS_REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region)
+
+# Define the location of the join script in S3
+export S3_JOIN_SCRIPT="s3://${BUCKET}/join.sh"
+export LOCAL_JOIN_SCRIPT="/tmp/join.sh"
+
+#############################################
+# 1. Wait for and Download Join Script from S3
+#############################################
+echo "--- Waiting for Control Plane to upload ${S3_JOIN_SCRIPT} ---"
+MAX_RETRIES=20
+RETRY_INTERVAL=15 # Wait 15 seconds between attempts (Total wait time ~5 minutes)
+RETRY_COUNT=0
+
+# Loop until the join script is successfully downloaded
+while ! aws s3 cp ${S3_JOIN_SCRIPT} ${LOCAL_JOIN_SCRIPT} --region ${AWS_REGION}; do
+    if [ $RETRY_COUNT -ge $MAX_RETRIES ]; then
+        echo "ERROR: Failed to retrieve Kubernetes join script after $MAX_RETRIES attempts. Exiting."
+        exit 1
+    fi
+    echo "Join script not yet available on S3. Retrying in ${RETRY_INTERVAL} seconds (Attempt $((RETRY_COUNT + 1)) of $MAX_RETRIES)..."
+    RETRY_COUNT=$((RETRY_COUNT + 1))
+    sleep ${RETRY_INTERVAL}
+done
+
+echo "Join script found on S3. Download successful."
+
+#############################################
+# 2. Execute Join Script
+#############################################
+echo "--- Executing join command ---"
+# The downloaded script (/tmp/join.sh) contains the 'sudo kubeadm join...' command.
+bash ${LOCAL_JOIN_SCRIPT}
+
+echo "Worker node successfully joined the cluster."
+echo "==== WORKER COMPLETE ===="

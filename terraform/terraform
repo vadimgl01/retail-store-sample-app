@@ -1,0 +1,2708 @@
+Script started on 2025-12-01 23:22:41+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="123" LINES="30"]
+✅ AWS credentials already configured for profile [vadim-student]:
+  Access Key: AKIAZFMA3F57N67ZVXPZ
+  Secret Key: ***************
+  Region: eu-central-1
+  Output: json
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ [7maws ec2 describe-vpcs --profile vadim-student --region eu-[27m[7mc[27m[7mentral-1 --query 'Vpcs[*].VpcId'[27m[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Caws ec2 describe-vpcs --profile vadim-student --region eu-central-1 --query 'Vpcs[*].VpcId'
+[?2004l[?1h=[[m
+    "vpc-0d35aea55e9ef1ad5",[m
+    "vpc-0e04ffe198f889488",[m
+    "vpc-00ba7a800c9391f60",[m
+    "vpc-00a69bdf05ab6fb5d",[m
+    "vpc-0f3cd1536f06dc05c"[m
+][m
+[K[?1l>[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ aws ec2 describe-vpcs --profile vadim-student --region eu-central-1 --query 'Vpcs[*].VpcId'[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctf apply[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1maws_key_pair.key: Refreshing state... [id=vad-ec2-key][0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 0s [id=eu-central-1][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # aws_instance.control_plane[0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "control_plane" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "vad-ec2-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-control-plane"
+          [32m+[0m[0m "role" = "control-plane"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-control-plane"
+          [32m+[0m[0m "role" = "control-plane"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_instance.worker_nodes[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "worker_nodes" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "vad-ec2-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-1"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-1"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_instance.worker_nodes[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "worker_nodes" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "vad-ec2-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-2"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-2"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_security_group.vadim_nodes[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "vadim_nodes" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Security group for Kubernetes control-plane and worker nodes"
+      [32m+[0m[0m egress                 = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "-1"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 0
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            },
+        ]
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "K8s API server"
+              [32m+[0m[0m from_port        = 6443
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 6443
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "Kubelet API"
+              [32m+[0m[0m from_port        = 10250
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 10250
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "NodePort services"
+              [32m+[0m[0m from_port        = 30000
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 32767
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "SSH access"
+              [32m+[0m[0m from_port        = 22
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 22
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "10.20.0.0/16",
+                ]
+              [32m+[0m[0m description      = "All internal VPC traffic"
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 65535
+            },
+        ]
+      [32m+[0m[0m name                   = "retail-vadim-vadim-nodes-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "retail-vadim-vadim-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "retail-vadim-vadim-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_subnet.public[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.1.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.2.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-2"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-2"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[2][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1c"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.3.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-3"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-3"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_vpc.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc" "main" {
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m cidr_block                           = "10.20.0.0/16"
+      [32m+[0m[0m default_network_acl_id               = (known after apply)
+      [32m+[0m[0m default_route_table_id               = (known after apply)
+      [32m+[0m[0m default_security_group_id            = (known after apply)
+      [32m+[0m[0m dhcp_options_id                      = (known after apply)
+      [32m+[0m[0m enable_dns_hostnames                 = true
+      [32m+[0m[0m enable_dns_support                   = true
+      [32m+[0m[0m enable_network_address_usage_metrics = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_tenancy                     = "default"
+      [32m+[0m[0m ipv6_association_id                  = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                      = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_network_border_group = (known after apply)
+      [32m+[0m[0m main_route_table_id                  = (known after apply)
+      [32m+[0m[0m owner_id                             = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-vpc"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-vpc"
+        }
+    }
+
+[1mPlan:[0m 8 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m control_plane_private_ip = (known after apply)
+  [32m+[0m[0m control_plane_public_ip  = (known after apply)
+  [32m+[0m[0m public_subnet_ids        = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+  [32m+[0m[0m vpc_id                   = (known after apply)
+  [32m+[0m[0m worker_nodes_private_ips = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+  [32m+[0m[0m worker_nodes_public_ips  = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1maws_vpc.main: Creating...[0m[0m
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mcreating EC2 VPC: operation error EC2: CreateVpc, https response error StatusCode: 400, RequestID: 3629f594-28ac-4c59-b573-0405e8898700, api error VpcLimitExceeded: The maximum number of VPCs has been reached.[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m  with aws_vpc.main,
+[31m│[0m [0m  on vpc.tf line 5, in resource "aws_vpc" "main":
+[31m│[0m [0m   5: resource "aws_vpc" "main" [4m{[0m[0m
+[31m│[0m [0m
+[31m╵[0m[0m
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf applyaws ec2 describe-vpcs --profile vadim-student --region eu-central-1 --query 'Vpcs[*].VpcId'
+[?2004l[?1h=[[m
+    "vpc-0d35aea55e9ef1ad5",[m
+    "vpc-0e04ffe198f889488",[m
+    "vpc-00ba7a800c9391f60",[m
+    "vpc-00a69bdf05ab6fb5d",[m
+    "vpc-0f3cd1536f06dc05c"[m
+][m
+[K[?1l>[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ aws ec2 describe-vpcs --profile vadim-student --region eu-central-1 --query 'Vpcs[*].VpcId'[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctf apply[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1maws_key_pair.key: Refreshing state... [id=vad-ec2-key][0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 0s [id=eu-central-1][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # aws_instance.control_plane[0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "control_plane" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "vad-ec2-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-control-plane"
+          [32m+[0m[0m "role" = "control-plane"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-control-plane"
+          [32m+[0m[0m "role" = "control-plane"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_instance.worker_nodes[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "worker_nodes" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "vad-ec2-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-1"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-1"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_instance.worker_nodes[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "worker_nodes" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "vad-ec2-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-2"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-2"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_security_group.vadim_nodes[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "vadim_nodes" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Security group for Kubernetes control-plane and worker nodes"
+      [32m+[0m[0m egress                 = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "-1"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 0
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            },
+        ]
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "K8s API server"
+              [32m+[0m[0m from_port        = 6443
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 6443
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "Kubelet API"
+              [32m+[0m[0m from_port        = 10250
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 10250
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "NodePort services"
+              [32m+[0m[0m from_port        = 30000
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 32767
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "SSH access"
+              [32m+[0m[0m from_port        = 22
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 22
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "10.20.0.0/16",
+                ]
+              [32m+[0m[0m description      = "All internal VPC traffic"
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 65535
+            },
+        ]
+      [32m+[0m[0m name                   = "retail-vadim-vadim-nodes-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "retail-vadim-vadim-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "retail-vadim-vadim-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_subnet.public[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.1.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.2.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-2"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-2"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[2][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1c"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.3.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-3"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-3"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_vpc.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc" "main" {
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m cidr_block                           = "10.20.0.0/16"
+      [32m+[0m[0m default_network_acl_id               = (known after apply)
+      [32m+[0m[0m default_route_table_id               = (known after apply)
+      [32m+[0m[0m default_security_group_id            = (known after apply)
+      [32m+[0m[0m dhcp_options_id                      = (known after apply)
+      [32m+[0m[0m enable_dns_hostnames                 = true
+      [32m+[0m[0m enable_dns_support                   = true
+      [32m+[0m[0m enable_network_address_usage_metrics = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_tenancy                     = "default"
+      [32m+[0m[0m ipv6_association_id                  = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                      = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_network_border_group = (known after apply)
+      [32m+[0m[0m main_route_table_id                  = (known after apply)
+      [32m+[0m[0m owner_id                             = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-vpc"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-vpc"
+        }
+    }
+
+[1mPlan:[0m 8 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m control_plane_private_ip = (known after apply)
+  [32m+[0m[0m control_plane_public_ip  = (known after apply)
+  [32m+[0m[0m public_subnet_ids        = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+  [32m+[0m[0m vpc_id                   = (known after apply)
+  [32m+[0m[0m worker_nodes_private_ips = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+  [32m+[0m[0m worker_nodes_public_ips  = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1maws_vpc.main: Creating...[0m[0m
+[0m[1maws_vpc.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_vpc.main: Creation complete after 12s [id=vpc-0001685ba48898ea3][0m
+[0m[1maws_subnet.public[0]: Creating...[0m[0m
+[0m[1maws_subnet.public[2]: Creating...[0m[0m
+[0m[1maws_subnet.public[1]: Creating...[0m[0m
+[0m[1maws_security_group.vadim_nodes: Creating...[0m[0m
+[0m[1maws_security_group.vadim_nodes: Creation complete after 3s [id=sg-0979084d408629b83][0m
+[0m[1maws_subnet.public[0]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[1]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[2]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[0]: Creation complete after 11s [id=subnet-05315f4aaa41482a0][0m
+[0m[1maws_instance.control_plane: Creating...[0m[0m
+[0m[1maws_subnet.public[2]: Creation complete after 12s [id=subnet-0d98bca5dd044b1d3][0m
+[0m[1maws_subnet.public[1]: Creation complete after 15s [id=subnet-0efeab95478530a9f][0m
+[0m[1maws_instance.worker_nodes[1]: Creating...[0m[0m
+[0m[1maws_instance.worker_nodes[0]: Creating...[0m[0m
+[0m[1maws_instance.control_plane: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Creation complete after 32s [id=i-035f035b2c13c53f3][0m
+[0m[1maws_instance.control_plane: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Creation complete after 43s [id=i-0017866c3f27b7254][0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Creation complete after 43s [id=i-09f7613a4234e974c][0m
+[0m[1m[32m
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+[0m[0m[1m[32m
+Outputs:
+
+[0mcontrol_plane_private_ip = "10.20.1.223"
+control_plane_public_ip = "3.127.217.139"
+public_subnet_ids = [
+  "subnet-05315f4aaa41482a0",
+  "subnet-0efeab95478530a9f",
+  "subnet-0d98bca5dd044b1d3",
+]
+vpc_id = "vpc-0001685ba48898ea3"
+worker_nodes_private_ips = [
+  "10.20.2.170",
+  "10.20.3.11",
+]
+worker_nodes_public_ips = [
+  "18.196.34.38",
+  "3.67.189.255",
+]
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi [7mvpc.tf[27mvpc.tf
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"vpc.tf" 13 lines, 250 bytes[1;1Hdata "aws_availability_zones" "available" {
+  state = "available"
+}
+
+resource "aws_vpc" "main" {
+  cidr_block[11C= var.vpc_cidr
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "${var.project_name}-vpc"
+  }
+}
+[94m~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+
+
+
+
+[7;1H[6;1H[5;1H[4;1H[3;1H[2;1H[?25l[m[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf destroy
+[?2004l[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1maws_vpc.main: Refreshing state... [id=vpc-0001685ba48898ea3][0m
+[0m[1maws_key_pair.key: Refreshing state... [id=vad-ec2-key][0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 0s [id=eu-central-1][0m
+[0m[1maws_subnet.public[2]: Refreshing state... [id=subnet-0d98bca5dd044b1d3][0m
+[0m[1maws_subnet.public[0]: Refreshing state... [id=subnet-05315f4aaa41482a0][0m
+[0m[1maws_subnet.public[1]: Refreshing state... [id=subnet-0efeab95478530a9f][0m
+[0m[1maws_security_group.vadim_nodes: Refreshing state... [id=sg-0979084d408629b83][0m
+[0m[1maws_instance.worker_nodes[0]: Refreshing state... [id=i-09f7613a4234e974c][0m
+[0m[1maws_instance.worker_nodes[1]: Refreshing state... [id=i-035f035b2c13c53f3][0m
+[0m[1maws_instance.control_plane: Refreshing state... [id=i-0017866c3f27b7254][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # aws_instance.control_plane[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_instance" "control_plane" {
+      [31m-[0m[0m ami                                  = "ami-004e960cde33f9146" [90m-> null[0m[0m
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:eu-central-1:630019796862:instance/i-0017866c3f27b7254" [90m-> null[0m[0m
+      [31m-[0m[0m associate_public_ip_address          = true [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                    = "eu-central-1a" [90m-> null[0m[0m
+      [31m-[0m[0m cpu_core_count                       = 2 [90m-> null[0m[0m
+      [31m-[0m[0m cpu_threads_per_core                 = 1 [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_stop                     = false [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_termination              = false [90m-> null[0m[0m
+      [31m-[0m[0m ebs_optimized                        = false [90m-> null[0m[0m
+      [31m-[0m[0m get_password_data                    = false [90m-> null[0m[0m
+      [31m-[0m[0m hibernation                          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "i-0017866c3f27b7254" [90m-> null[0m[0m
+      [31m-[0m[0m instance_initiated_shutdown_behavior = "stop" [90m-> null[0m[0m
+      [31m-[0m[0m instance_state                       = "running" [90m-> null[0m[0m
+      [31m-[0m[0m instance_type                        = "t2.medium" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_address_count                   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_addresses                       = [] [90m-> null[0m[0m
+      [31m-[0m[0m key_name                             = "vad-ec2-key" [90m-> null[0m[0m
+      [31m-[0m[0m monitoring                           = false [90m-> null[0m[0m
+      [31m-[0m[0m placement_partition_number           = 0 [90m-> null[0m[0m
+      [31m-[0m[0m primary_network_interface_id         = "eni-0200f234c2a84d1f8" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns                          = "ip-10-20-1-223.eu-central-1.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                           = "10.20.1.223" [90m-> null[0m[0m
+      [31m-[0m[0m public_dns                           = "ec2-3-127-217-139.eu-central-1.compute.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                            = "3.127.217.139" [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ips                = [] [90m-> null[0m[0m
+      [31m-[0m[0m security_groups                      = [] [90m-> null[0m[0m
+      [31m-[0m[0m source_dest_check                    = true [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                            = "subnet-05315f4aaa41482a0" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "retail-vadim-control-plane"
+          [31m-[0m[0m "role" = "control-plane"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "retail-vadim-control-plane"
+          [31m-[0m[0m "role" = "control-plane"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tenancy                              = "default" [90m-> null[0m[0m
+      [31m-[0m[0m user_data_replace_on_change          = false [90m-> null[0m[0m
+      [31m-[0m[0m vpc_security_group_ids               = [
+          [31m-[0m[0m "sg-0979084d408629b83",
+        ] [90m-> null[0m[0m
+        [90m# (7 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m capacity_reservation_specification {
+          [31m-[0m[0m capacity_reservation_preference = "open" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m cpu_options {
+          [31m-[0m[0m core_count       = 2 [90m-> null[0m[0m
+          [31m-[0m[0m threads_per_core = 1 [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m credit_specification {
+          [31m-[0m[0m cpu_credits = "standard" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m enclave_options {
+          [31m-[0m[0m enabled = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m maintenance_options {
+          [31m-[0m[0m auto_recovery = "default" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m http_endpoint               = "enabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_protocol_ipv6          = "disabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_put_response_hop_limit = 2 [90m-> null[0m[0m
+          [31m-[0m[0m http_tokens                 = "required" [90m-> null[0m[0m
+          [31m-[0m[0m instance_metadata_tags      = "disabled" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m private_dns_name_options {
+          [31m-[0m[0m enable_resource_name_dns_a_record    = false [90m-> null[0m[0m
+          [31m-[0m[0m enable_resource_name_dns_aaaa_record = false [90m-> null[0m[0m
+          [31m-[0m[0m hostname_type                        = "ip-name" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m root_block_device {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name           = "/dev/sda1" [90m-> null[0m[0m
+          [31m-[0m[0m encrypted             = false [90m-> null[0m[0m
+          [31m-[0m[0m iops                  = 3000 [90m-> null[0m[0m
+          [31m-[0m[0m tags                  = {} [90m-> null[0m[0m
+          [31m-[0m[0m tags_all              = {} [90m-> null[0m[0m
+          [31m-[0m[0m throughput            = 125 [90m-> null[0m[0m
+          [31m-[0m[0m volume_id             = "vol-0d46f7a6223ed3046" [90m-> null[0m[0m
+          [31m-[0m[0m volume_size           = 8 [90m-> null[0m[0m
+          [31m-[0m[0m volume_type           = "gp3" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # aws_instance.worker_nodes[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_instance" "worker_nodes" {
+      [31m-[0m[0m ami                                  = "ami-004e960cde33f9146" [90m-> null[0m[0m
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:eu-central-1:630019796862:instance/i-09f7613a4234e974c" [90m-> null[0m[0m
+      [31m-[0m[0m associate_public_ip_address          = true [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                    = "eu-central-1b" [90m-> null[0m[0m
+      [31m-[0m[0m cpu_core_count                       = 2 [90m-> null[0m[0m
+      [31m-[0m[0m cpu_threads_per_core                 = 1 [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_stop                     = false [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_termination              = false [90m-> null[0m[0m
+      [31m-[0m[0m ebs_optimized                        = false [90m-> null[0m[0m
+      [31m-[0m[0m get_password_data                    = false [90m-> null[0m[0m
+      [31m-[0m[0m hibernation                          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "i-09f7613a4234e974c" [90m-> null[0m[0m
+      [31m-[0m[0m instance_initiated_shutdown_behavior = "stop" [90m-> null[0m[0m
+      [31m-[0m[0m instance_state                       = "running" [90m-> null[0m[0m
+      [31m-[0m[0m instance_type                        = "t2.medium" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_address_count                   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_addresses                       = [] [90m-> null[0m[0m
+      [31m-[0m[0m key_name                             = "vad-ec2-key" [90m-> null[0m[0m
+      [31m-[0m[0m monitoring                           = false [90m-> null[0m[0m
+      [31m-[0m[0m placement_partition_number           = 0 [90m-> null[0m[0m
+      [31m-[0m[0m primary_network_interface_id         = "eni-07155050fdc055667" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns                          = "ip-10-20-2-170.eu-central-1.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                           = "10.20.2.170" [90m-> null[0m[0m
+      [31m-[0m[0m public_dns                           = "ec2-18-196-34-38.eu-central-1.compute.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                            = "18.196.34.38" [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ips                = [] [90m-> null[0m[0m
+      [31m-[0m[0m security_groups                      = [] [90m-> null[0m[0m
+      [31m-[0m[0m source_dest_check                    = true [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                            = "subnet-0efeab95478530a9f" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "retail-vadim-worker-1"
+          [31m-[0m[0m "role" = "worker"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "retail-vadim-worker-1"
+          [31m-[0m[0m "role" = "worker"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tenancy                              = "default" [90m-> null[0m[0m
+      [31m-[0m[0m user_data_replace_on_change          = false [90m-> null[0m[0m
+      [31m-[0m[0m vpc_security_group_ids               = [
+          [31m-[0m[0m "sg-0979084d408629b83",
+        ] [90m-> null[0m[0m
+        [90m# (7 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m capacity_reservation_specification {
+          [31m-[0m[0m capacity_reservation_preference = "open" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m cpu_options {
+          [31m-[0m[0m core_count       = 2 [90m-> null[0m[0m
+          [31m-[0m[0m threads_per_core = 1 [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m credit_specification {
+          [31m-[0m[0m cpu_credits = "standard" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m enclave_options {
+          [31m-[0m[0m enabled = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m maintenance_options {
+          [31m-[0m[0m auto_recovery = "default" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m http_endpoint               = "enabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_protocol_ipv6          = "disabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_put_response_hop_limit = 2 [90m-> null[0m[0m
+          [31m-[0m[0m http_tokens                 = "required" [90m-> null[0m[0m
+          [31m-[0m[0m instance_metadata_tags      = "disabled" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m private_dns_name_options {
+          [31m-[0m[0m enable_resource_name_dns_a_record    = false [90m-> null[0m[0m
+          [31m-[0m[0m enable_resource_name_dns_aaaa_record = false [90m-> null[0m[0m
+          [31m-[0m[0m hostname_type                        = "ip-name" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m root_block_device {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name           = "/dev/sda1" [90m-> null[0m[0m
+          [31m-[0m[0m encrypted             = false [90m-> null[0m[0m
+          [31m-[0m[0m iops                  = 3000 [90m-> null[0m[0m
+          [31m-[0m[0m tags                  = {} [90m-> null[0m[0m
+          [31m-[0m[0m tags_all              = {} [90m-> null[0m[0m
+          [31m-[0m[0m throughput            = 125 [90m-> null[0m[0m
+          [31m-[0m[0m volume_id             = "vol-02dad8ef5055c674e" [90m-> null[0m[0m
+          [31m-[0m[0m volume_size           = 8 [90m-> null[0m[0m
+          [31m-[0m[0m volume_type           = "gp3" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # aws_instance.worker_nodes[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_instance" "worker_nodes" {
+      [31m-[0m[0m ami                                  = "ami-004e960cde33f9146" [90m-> null[0m[0m
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:eu-central-1:630019796862:instance/i-035f035b2c13c53f3" [90m-> null[0m[0m
+      [31m-[0m[0m associate_public_ip_address          = true [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                    = "eu-central-1c" [90m-> null[0m[0m
+      [31m-[0m[0m cpu_core_count                       = 2 [90m-> null[0m[0m
+      [31m-[0m[0m cpu_threads_per_core                 = 1 [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_stop                     = false [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_termination              = false [90m-> null[0m[0m
+      [31m-[0m[0m ebs_optimized                        = false [90m-> null[0m[0m
+      [31m-[0m[0m get_password_data                    = false [90m-> null[0m[0m
+      [31m-[0m[0m hibernation                          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "i-035f035b2c13c53f3" [90m-> null[0m[0m
+      [31m-[0m[0m instance_initiated_shutdown_behavior = "stop" [90m-> null[0m[0m
+      [31m-[0m[0m instance_state                       = "running" [90m-> null[0m[0m
+      [31m-[0m[0m instance_type                        = "t2.medium" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_address_count                   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_addresses                       = [] [90m-> null[0m[0m
+      [31m-[0m[0m key_name                             = "vad-ec2-key" [90m-> null[0m[0m
+      [31m-[0m[0m monitoring                           = false [90m-> null[0m[0m
+      [31m-[0m[0m placement_partition_number           = 0 [90m-> null[0m[0m
+      [31m-[0m[0m primary_network_interface_id         = "eni-0c845ad088bcc5644" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns                          = "ip-10-20-3-11.eu-central-1.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                           = "10.20.3.11" [90m-> null[0m[0m
+      [31m-[0m[0m public_dns                           = "ec2-3-67-189-255.eu-central-1.compute.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                            = "3.67.189.255" [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ips                = [] [90m-> null[0m[0m
+      [31m-[0m[0m security_groups                      = [] [90m-> null[0m[0m
+      [31m-[0m[0m source_dest_check                    = true [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                            = "subnet-0d98bca5dd044b1d3" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "retail-vadim-worker-2"
+          [31m-[0m[0m "role" = "worker"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "retail-vadim-worker-2"
+          [31m-[0m[0m "role" = "worker"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tenancy                              = "default" [90m-> null[0m[0m
+      [31m-[0m[0m user_data_replace_on_change          = false [90m-> null[0m[0m
+      [31m-[0m[0m vpc_security_group_ids               = [
+          [31m-[0m[0m "sg-0979084d408629b83",
+        ] [90m-> null[0m[0m
+        [90m# (7 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m capacity_reservation_specification {
+          [31m-[0m[0m capacity_reservation_preference = "open" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m cpu_options {
+          [31m-[0m[0m core_count       = 2 [90m-> null[0m[0m
+          [31m-[0m[0m threads_per_core = 1 [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m credit_specification {
+          [31m-[0m[0m cpu_credits = "standard" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m enclave_options {
+          [31m-[0m[0m enabled = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m maintenance_options {
+          [31m-[0m[0m auto_recovery = "default" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m http_endpoint               = "enabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_protocol_ipv6          = "disabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_put_response_hop_limit = 2 [90m-> null[0m[0m
+          [31m-[0m[0m http_tokens                 = "required" [90m-> null[0m[0m
+          [31m-[0m[0m instance_metadata_tags      = "disabled" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m private_dns_name_options {
+          [31m-[0m[0m enable_resource_name_dns_a_record    = false [90m-> null[0m[0m
+          [31m-[0m[0m enable_resource_name_dns_aaaa_record = false [90m-> null[0m[0m
+          [31m-[0m[0m hostname_type                        = "ip-name" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m root_block_device {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name           = "/dev/sda1" [90m-> null[0m[0m
+          [31m-[0m[0m encrypted             = false [90m-> null[0m[0m
+          [31m-[0m[0m iops                  = 3000 [90m-> null[0m[0m
+          [31m-[0m[0m tags                  = {} [90m-> null[0m[0m
+          [31m-[0m[0m tags_all              = {} [90m-> null[0m[0m
+          [31m-[0m[0m throughput            = 125 [90m-> null[0m[0m
+          [31m-[0m[0m volume_id             = "vol-0485427e6397b7e96" [90m-> null[0m[0m
+          [31m-[0m[0m volume_size           = 8 [90m-> null[0m[0m
+          [31m-[0m[0m volume_type           = "gp3" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # aws_key_pair.key[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_key_pair" "key" {
+      [31m-[0m[0m arn             = "arn:aws:ec2:eu-central-1:630019796862:key-pair/vad-ec2-key" [90m-> null[0m[0m
+      [31m-[0m[0m fingerprint     = "04:94:a6:bc:3b:4d:12:ca:b4:34:68:13:ca:cf:13:e9" [90m-> null[0m[0m
+      [31m-[0m[0m id              = "vad-ec2-key" [90m-> null[0m[0m
+      [31m-[0m[0m key_name        = "vad-ec2-key" [90m-> null[0m[0m
+      [31m-[0m[0m key_pair_id     = "key-0eadc0498395f410b" [90m-> null[0m[0m
+      [31m-[0m[0m key_type        = "rsa" [90m-> null[0m[0m
+      [31m-[0m[0m public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCiti+/M8wDypByvb3kDdrS+Lr9zbxI3mvhM/w0tlNP7ZvBbUvouLkRL+jd4SFGjCigej9wya7IgUpYAyu1CffWPtH0rpV93dR8u7B5TbNxKBA7yjR3kzlnFPf0x12u0e4Kh1cQPxMWO7e4thUpLqcCbFuiGOlgZZsSWBRkfW8WWomlsFeSn+Hj3pmoWe+XbJr5Ae7FrghLxH9ZJ8bdnWZv5EDZtGUu1UP4BCjjK8C4BDU7WGGboyxQ/Iq+Aql3LObruk4QbP5zM4lRthYXyMVVgw/bxzzsITBACnZkSLCFw5/niC+962NR8t7tEF1BWr6jojMynYs2dp8JwA0eyUFZ4nsg6z7hvE+JoOwDlYZTAwOyJLm/Z8+8c4qwzyvY7AFfejsQAow2pfr2VoNrSfzq2T/X5FcFVvRrR8c6ozB5IBUWR8cJ25RV4bKgDdDLe0fZZWkXZApEYd+NkiEGb2Xa9HwYd5VUDcyFnvHdKEd3kGubjMc9XNoq3IomZKv6xRP75BuHmiRm653nkWmJ85AMX81J54RgGWC1tKoPeZ2zYBz1lp+/lMR5H4oWri6Ra+q6nneeyNpw3QSR66yw+T4lEPr7/zZ1NcO+N2B6AzdCj2tucHO2gmd0Urf6tM2cOVFE8xoGlbI+pEBneIumwWtS0rDb0PpmXGJ7zL1Ei8rBQ== vadimgl@Devops2" [90m-> null[0m[0m
+      [31m-[0m[0m tags            = {
+          [31m-[0m[0m "Name" = "retail-vadim-keypair"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all        = {
+          [31m-[0m[0m "Name" = "retail-vadim-keypair"
+        } [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_security_group.vadim_nodes[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_security_group" "vadim_nodes" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:eu-central-1:630019796862:security-group/sg-0979084d408629b83" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Security group for Kubernetes control-plane and worker nodes" [90m-> null[0m[0m
+      [31m-[0m[0m egress                 = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m from_port        = 0
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "-1"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 0
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sg-0979084d408629b83" [90m-> null[0m[0m
+      [31m-[0m[0m ingress                = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "K8s API server"
+              [31m-[0m[0m from_port        = 6443
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 6443
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "Kubelet API"
+              [31m-[0m[0m from_port        = 10250
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 10250
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "NodePort services"
+              [31m-[0m[0m from_port        = 30000
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 32767
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "SSH access"
+              [31m-[0m[0m from_port        = 22
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 22
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "10.20.0.0/16",
+                ]
+              [31m-[0m[0m description      = "All internal VPC traffic"
+              [31m-[0m[0m from_port        = 0
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 65535
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "retail-vadim-vadim-nodes-sg" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id               = "630019796862" [90m-> null[0m[0m
+      [31m-[0m[0m revoke_rules_on_delete = false [90m-> null[0m[0m
+      [31m-[0m[0m tags                   = {
+          [31m-[0m[0m "Name" = "retail-vadim-vadim-sg"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Name" = "retail-vadim-vadim-sg"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                 = "vpc-0001685ba48898ea3" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_subnet.public[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "public" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:eu-central-1:630019796862:subnet/subnet-05315f4aaa41482a0" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "eu-central-1a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "euc1-az2" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.20.1.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-05315f4aaa41482a0" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "630019796862" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "retail-vadim-public-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "retail-vadim-public-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0001685ba48898ea3" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_subnet.public[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "public" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:eu-central-1:630019796862:subnet/subnet-0efeab95478530a9f" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "eu-central-1b" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "euc1-az3" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.20.2.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-0efeab95478530a9f" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "630019796862" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "retail-vadim-public-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "retail-vadim-public-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0001685ba48898ea3" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_subnet.public[2][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "public" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:eu-central-1:630019796862:subnet/subnet-0d98bca5dd044b1d3" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "eu-central-1c" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "euc1-az1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.20.3.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-0d98bca5dd044b1d3" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "630019796862" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "retail-vadim-public-3"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "retail-vadim-public-3"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0001685ba48898ea3" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_vpc.main[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc" "main" {
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:eu-central-1:630019796862:vpc/vpc-0001685ba48898ea3" [90m-> null[0m[0m
+      [31m-[0m[0m assign_generated_ipv6_cidr_block     = false [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                           = "10.20.0.0/16" [90m-> null[0m[0m
+      [31m-[0m[0m default_network_acl_id               = "acl-05ea9097163558ed3" [90m-> null[0m[0m
+      [31m-[0m[0m default_route_table_id               = "rtb-094df03c1d45bf68c" [90m-> null[0m[0m
+      [31m-[0m[0m default_security_group_id            = "sg-0db22da34f9ee9bed" [90m-> null[0m[0m
+      [31m-[0m[0m dhcp_options_id                      = "dopt-095ed953c7346d638" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_hostnames                 = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_support                   = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_network_address_usage_metrics = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "vpc-0001685ba48898ea3" [90m-> null[0m[0m
+      [31m-[0m[0m instance_tenancy                     = "default" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_netmask_length                  = 0 [90m-> null[0m[0m
+      [31m-[0m[0m main_route_table_id                  = "rtb-094df03c1d45bf68c" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                             = "630019796862" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "retail-vadim-vpc"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "retail-vadim-vpc"
+        } [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 0 to change, 9 to destroy.
+[0m
+Changes to Outputs:
+  [31m-[0m[0m control_plane_private_ip = "10.20.1.223" [90m-> null[0m[0m
+  [31m-[0m[0m control_plane_public_ip  = "3.127.217.139" [90m-> null[0m[0m
+  [31m-[0m[0m public_subnet_ids        = [
+      [31m-[0m[0m "subnet-05315f4aaa41482a0",
+      [31m-[0m[0m "subnet-0efeab95478530a9f",
+      [31m-[0m[0m "subnet-0d98bca5dd044b1d3",
+    ] [90m-> null[0m[0m
+  [31m-[0m[0m vpc_id                   = "vpc-0001685ba48898ea3" [90m-> null[0m[0m
+  [31m-[0m[0m worker_nodes_private_ips = [
+      [31m-[0m[0m "10.20.2.170",
+      [31m-[0m[0m "10.20.3.11",
+    ] [90m-> null[0m[0m
+  [31m-[0m[0m worker_nodes_public_ips  = [
+      [31m-[0m[0m "18.196.34.38",
+      [31m-[0m[0m "3.67.189.255",
+    ] [90m-> null[0m[0m
+[0m[1m
+Do you really want to destroy all resources?[0m
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1maws_instance.control_plane: Destroying... [id=i-0017866c3f27b7254][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Destroying... [id=i-035f035b2c13c53f3][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Destroying... [id=i-09f7613a4234e974c][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still destroying... [id=i-09f7613a4234e974c, 00m10s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still destroying... [id=i-035f035b2c13c53f3, 00m10s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Still destroying... [id=i-0017866c3f27b7254, 00m10s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Still destroying... [id=i-0017866c3f27b7254, 00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still destroying... [id=i-09f7613a4234e974c, 00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still destroying... [id=i-035f035b2c13c53f3, 00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still destroying... [id=i-09f7613a4234e974c, 00m30s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Still destroying... [id=i-0017866c3f27b7254, 00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still destroying... [id=i-035f035b2c13c53f3, 00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Destruction complete after 30s[0m
+[0m[1maws_instance.control_plane: Still destroying... [id=i-0017866c3f27b7254, 00m40s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still destroying... [id=i-09f7613a4234e974c, 00m40s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Destruction complete after 41s[0m
+[0m[1maws_instance.worker_nodes[0]: Destruction complete after 41s[0m
+[0m[1maws_key_pair.key: Destroying... [id=vad-ec2-key][0m[0m
+[0m[1maws_subnet.public[0]: Destroying... [id=subnet-05315f4aaa41482a0][0m[0m
+[0m[1maws_subnet.public[2]: Destroying... [id=subnet-0d98bca5dd044b1d3][0m[0m
+[0m[1maws_security_group.vadim_nodes: Destroying... [id=sg-0979084d408629b83][0m[0m
+[0m[1maws_subnet.public[1]: Destroying... [id=subnet-0efeab95478530a9f][0m[0m
+[0m[1maws_key_pair.key: Destruction complete after 0s[0m
+[0m[1maws_subnet.public[0]: Destruction complete after 0s[0m
+[0m[1maws_subnet.public[2]: Destruction complete after 0s[0m
+[0m[1maws_subnet.public[1]: Destruction complete after 0s[0m
+[0m[1maws_security_group.vadim_nodes: Destruction complete after 1s[0m
+[0m[1maws_vpc.main: Destroying... [id=vpc-0001685ba48898ea3][0m[0m
+[0m[1maws_vpc.main: Destruction complete after 0s[0m
+[0m[1m[32m
+Destroy complete! Resources: 9 destroyed.
+[0m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf destroy^C[?2004l[?2004h[?2004l
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ ls -lrt
+[?2004ltotal 172
+-rw-rw-r-- 1 vadimgl vadimgl   354 Nov 29 23:10 main.tf
+-rw-rw-r-- 1 vadimgl vadimgl  1003 Nov 30 20:33 outputs.tf
+-rw-rw-r-- 1 vadimgl vadimgl   250 Nov 30 22:53 vpc.tf
+-rw-rw-r-- 1 vadimgl vadimgl   370 Nov 30 22:54 subnets.tf
+-rw-rw-r-- 1 vadimgl vadimgl  1306 Nov 30 23:21 security_groups.tf
+-rw-rw-r-- 1 vadimgl vadimgl  1621 Nov 30 23:22 variables.tf
+-rw-rw-r-- 1 vadimgl vadimgl   320 Nov 30 23:33 terraform.tfvars
+-rw-rw-r-- 1 vadimgl vadimgl   164 Dec  1 01:11 keypair.tf
+-rw-rw-r-- 1 vadimgl vadimgl   221 Dec  1 01:15 providers.tf
+-rw-rw-r-- 1 vadimgl vadimgl   949 Dec  1 01:16 ec2.tf
+-rw-rw-r-- 1 vadimgl vadimgl 98304 Dec  1 23:39 terraform
+-rw-rw-r-- 1 vadimgl vadimgl 29492 Dec  1 23:39 terraform.tfstate.backup
+-rw-rw-r-- 1 vadimgl vadimgl   182 Dec  1 23:40 terraform.tfstate
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi keypair.tf 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"keypair.tf" 8 lines, 164 bytes[1;1Hresource "aws_key_pair" "key" {
+  key_name   = var.ssh_key_name
+  public_key = file(var.public_key_path)
+
+  tags = {
+    Name = "${var.project_name}-keypair"
+  }
+}
+[94m~                                                                                                                          [10;1H~                                                                                                                          [11;1H~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+
+
+[5;1H[4;1H[3;1H[2;1H[1;1H[?25l[1;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [m[30;1H[K[1;3H[?25h[?25l[1;29r[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [1;3H[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [1;1H[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [1;3H[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [1;5H[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [1;3H[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [1;1H[?25h[?25l[m[1;1H[K[30;1H--No lines in buffer--[1;1H[?25h[?2004l[>4;m[?25lresource "aws_key_pair" "key" {
+  key_name   = [2;16H[K[2;16H[?25h[?25l"${var.project_name}-key"
+  public_key = file(var.public[3;31H[K[3;31H[?25h[?25l_key_path)[4;1H[K[5;1H  tags = {[5;11H[K[6;1H    Name = "${var.project_name}-key[6;36H[K[6;36H[?25h[?2004h[>4;2m[?25lpair"
+  }[7;4H[K[8;1H}[8;2H[K[8;1H[?25h[?4m[?25l[30;1H[K[30;1H:[?25hx[?25l[?2004l[>4;m"keypair.tf" 8 lines, 173 bytes written[23;2t[23;1t
+[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi keypair.tf 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"keypair.tf" 8 lines, 173 bytes[1;1Hresource "aws_key_pair" "key" {
+  key_name   = "${var.project_name}-key"
+  public_key = file(var.public_key_path)
+
+  tags = {
+    Name = "${var.project_name}-keypair"
+  }
+}
+[94m~                                                                                                                          [10;1H~                                                                                                                          [11;1H~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+
+
+[m    Name = "${var.proj[?25l[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ ls -lrt
+[?2004ltotal 180
+-rw-rw-r-- 1 vadimgl vadimgl    354 Nov 29 23:10 main.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1003 Nov 30 20:33 outputs.tf
+-rw-rw-r-- 1 vadimgl vadimgl    250 Nov 30 22:53 vpc.tf
+-rw-rw-r-- 1 vadimgl vadimgl    370 Nov 30 22:54 subnets.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1306 Nov 30 23:21 security_groups.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1621 Nov 30 23:22 variables.tf
+-rw-rw-r-- 1 vadimgl vadimgl    320 Nov 30 23:33 terraform.tfvars
+-rw-rw-r-- 1 vadimgl vadimgl    221 Dec  1 01:15 providers.tf
+-rw-rw-r-- 1 vadimgl vadimgl    949 Dec  1 01:16 ec2.tf
+-rw-rw-r-- 1 vadimgl vadimgl  29492 Dec  1 23:39 terraform.tfstate.backup
+-rw-rw-r-- 1 vadimgl vadimgl    182 Dec  1 23:40 terraform.tfstate
+-rw-rw-r-- 1 vadimgl vadimgl    173 Dec  2 00:09 keypair.tf
+-rw-rw-r-- 1 vadimgl vadimgl 106496 Dec  2 00:12 terraform
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi [7mterraform.tfstate[27mterraform.tfstate
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"terraform.tfstate" 9 lines, 182 bytes[1;1H{
+  "version": 4,
+  "terraform_version": "1.13.1",
+  "serial": 35,
+  "lineage": "8b068222-bde4-268f-aef3-de11d02be4e9",
+  "outputs": {},
+  "resources": [],
+  "check_results": null
+}
+[94m~                                                                                                                          [11;1H~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+[3;1H
+
+
+[?25l[m[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi terraform
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"terraform" [Incomplete last line] 1704 lines, 110592 bytes[1;1HScript started on 2025-12-01 23:22:41+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="123" LINES="30"]
+✅[2;4HAWS credentials already configured for profile [vadim-student]:[34m^M[m
+  Access Key: AKIAZFMA3F57N67ZVXPZ[34m^M[m
+  Secret Key: ***************[34m^M[m
+  Region: eu-central-1[34m^M[m
+  Output: json[34m^M
+^[[m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ [34m^[[m[7maws ec2 describe-vpcs --profile vadim-studenn[8;1Ht --region eu-[34m^[[m[27m[34m^[[m[7mc[34m^[[m[27m[34m^[[m[7mentral-1 --query 'Vpcs[*].VpcId'[34m^[[m[27m[34m^[[m[A[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[CC[9;1H[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[Caws ec2 describe-vpcs --profile vadim-ss[10;1Htudent --region eu-central-1 --query 'Vpcs[*].VpcId'[34m^M
+^[[m[?2004l[34m^M^[[m[?1h[34m^[[m=[34m^M[m[[34m^[[m[m[34m^M[m
+    "vpc-0d35aea55e9ef1ad5",[34m^[[m[m[34m^M[m
+    "vpc-0e04ffe198f889488",[34m^[[m[m[34m^M[m
+    "vpc-00ba7a800c9391f60",[34m^[[m[m[34m^M[m
+    "vpc-00a69bdf05ab6fb5d",[34m^[[m[m[34m^M[m
+    "vpc-0f3cd1536f06dc05c"[34m^[[m[m[34m^M[m
+][34m^[[m[m[34m^M
+^M^[[m[K[34m^[[m[?1l[34m^[[m>[34m^[[m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ aws ec2 describe-vpcs --profile vaa[19;1Hdim-student --region eu-central-1 --query 'Vpcs[*].VpcId'[34m^[[m[A[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[[m[20;1H[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[Ctf apply[34m^[[m[K[34m^M
+^M^[[m[K[34m^[[m[A[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^^[22;1H[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[CC[23;1H[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^[[m[C[34m^M
+^[[m[?2004l[34m^M^[[m[0m[34m^[[m[1mdata.aws_availability_zones.available: Reading...[34m^[[m[0m[34m^[[m[0m[34m^M
+^[[m[0m[34m^[[m[1maws_key_pair.key: Refreshing state... [id=vad-ec2-key][34m^[[m[0m[34m^M
+^[[m[0m[34m^[[m[1mdata.aws_availability_zones.available: Read complete after 0s [id=eu-central-1][34m^[[m[0m[34m^M
+^M[m
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the[34m^M[m
+following symbols:[34m^M[1;1H[?25h[?4m
+
+
+
+
+
+[11;1H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[?25l[1;29r[m[29;1H
+[1;30r[29;3H[34m^[[m[32m+[34m^[[m[0m create[34m^[[m[0m[34m^M[m[30;1H[K[29;1H[?25h[?25l[1;29r[29;1H
+[1;30r[29;1H[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1HTerraform will perform the following actions:[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[34m^[[m[1m  # aws_instance.control_plane[34m^[[m[0m will be created[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;1H[34m^[[m[0m  [34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m resource "aws_instance" "control_plane" {[34m^M[?25h[?25l[1;29r[m[1;1H[4M[1;30r[26;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m ami[34C= "ami-004e960cde33f9146"[34m^M[27;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m arn[34C= (known after apply)[34m^M[28;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m associate_public_ip_address[10C= true[34m^M[29;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m availability_zone[20C= (known after apply)[34m^M[26;1H[?25h
+
+
+[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m cpu_core_count[23C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m cpu_threads_per_core[17C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m disable_api_stop[21C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m disable_api_termination[14C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m ebs_optimized[24C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m enable_primary_ipv6[18C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m get_password_data[20C= false[34m^M[?25h[?25l[1;29r[m[1;1H[3M[1;30r[27;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m host_id[30C= (known after apply)[34m^M[28;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m host_resource_group_arn[14C= (known after apply)[34m^M[29;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m iam_instance_profile[17C= (known after apply)[34m^M[27;1H[?25h
+
+[?25l[1;29r[m[1;1H[3M[1;30r[27;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m id[35C= (known after apply)[34m^M[28;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m instance_initiated_shutdown_behavior = (known after apply)[34m^M[29;7H^[[m[32m+[34m^[[m[0m[34m^[[m[0m instance_lifecycle[19C= (known after apply)[34m^M[27;1H[?25h
+
+[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m instance_state[23C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m instance_type[24C= "t2.medium"[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m ipv6_address_count[19C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m ipv6_addresses[23C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m key_name[29C= "vad-ec2-key"[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m monitoring[27C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m outpost_arn[26C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m password_data[24C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m placement_group[22C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m placement_partition_number[11C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m primary_network_interface_id[9C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m private_dns[26C= (known after apply)[34m^M[?25h[?25l[1;29r[m[29;1H
+[1;30r[29;7H[34m^[[m[32m+[34m^[[m[0m[34m^[[m[0m private_ip[27C= (known after apply)[34m^M[?25h[?25l
+[m:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ ls -lrt
+[?2004ltotal 192
+-rw-rw-r-- 1 vadimgl vadimgl    354 Nov 29 23:10 main.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1003 Nov 30 20:33 outputs.tf
+-rw-rw-r-- 1 vadimgl vadimgl    250 Nov 30 22:53 vpc.tf
+-rw-rw-r-- 1 vadimgl vadimgl    370 Nov 30 22:54 subnets.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1306 Nov 30 23:21 security_groups.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1621 Nov 30 23:22 variables.tf
+-rw-rw-r-- 1 vadimgl vadimgl    320 Nov 30 23:33 terraform.tfvars
+-rw-rw-r-- 1 vadimgl vadimgl    221 Dec  1 01:15 providers.tf
+-rw-rw-r-- 1 vadimgl vadimgl    949 Dec  1 01:16 ec2.tf
+-rw-rw-r-- 1 vadimgl vadimgl  29492 Dec  1 23:39 terraform.tfstate.backup
+-rw-rw-r-- 1 vadimgl vadimgl    182 Dec  1 23:40 terraform.tfstate
+-rw-rw-r-- 1 vadimgl vadimgl    173 Dec  2 00:09 keypair.tf
+-rw-rw-r-- 1 vadimgl vadimgl 118784 Dec  2 00:13 terraform
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi [7msecurity_groups.tf[27msecurity_groups.tf
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"security_groups.tf" 62 lines, 1306 bytes[1;1Hresource "aws_security_group" "vadim_nodes" {
+  name[8C= "${var.project_name}-vadim-nodes-sg"
+  description = "Security group for Kubernetes control-plane and worker nodes"
+  vpc_id      = aws_vpc.main.id
+
+  # SSH access
+  ingress {
+    description = "SSH access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Kubernetes API server (control plane)
+  ingress {
+    description = "K8s API server"
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Kubelet API
+  ingress {
+    description = "Kubelet API"
+    from_port   = 10250
+    to_port     = 10250
+    protocol    = "tcp"[1;1H[?25h[?4m
+
+[2;1H[1;1Hresource "aws_secur[2;20H[3;20H[2;20Hvar.project_name}-vadivadim-[30;1H
+[?2004l[?1l>[?1049l[23;0;0t[>4;m
+[1]+  Stopped                 vi security_groups.tf
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi security_groups.tf
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H[97m[41mE325: ATTENTION[m
+Found a swap file by the name ".security_groups.tf.swp"
+[10Cowned by: vadimgl   dated: Tue Dec 02 00:14:33 2025
+[9Cfile name: ~vadimgl/RetailStore/retail-store-sample-app/terraform/security_groups.tf
+[10Cmodified: no
+[9Cuser name: vadimgl   host name: Devops2
+[8Cprocess ID: 209855 (STILL RUNNING)
+While opening file "security_groups.tf"
+[13Cdated: Sun Nov 30 23:21:50 2025
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r security_groups.tf"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".security_groups.tf.swp"
+    to avoid this message.
+
+"security_groups.tf"[29;1H"security_groups.tf" 62 lines, 1306 bytes[30;1H[K[30;1H[32mPress ENTER or type command to continue[?25h[m[1;1H[19L[?25l[1;1Hresource "aws_security_group" "vadim_nodes" {
+  name[8C= "${var.project_name}-vadim-nodes-sg"
+  description = "Security group for Kubernetes control-plane and worker nodes"
+  vpc_id      = aws_vpc.main.id
+
+  # SSH access
+  ingress {
+    description = "SSH access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Kubernetes API server (control plane)
+  ingress {
+    description = "K8s API server"
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Kubelet API
+  ingress {
+    description = "Kubelet API"
+    from_port   = 10250
+    to_port     = 10250
+    protocol    = "tcp"[30;1H[K[1;1H[?25h[?25l[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ fg
+[?2004lvi security_groups.tf
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1Hresource "aws_security_group" "vadim_nodes" {
+  name[8C= "${var.project_name}-vadim-nodes-sg"
+  description = "Security group for Kubernetes control-plane and worker nodes"
+  vpc_id      = aws_vpc.main.id
+
+  # SSH access
+  ingress {
+    description = "SSH access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Kubernetes API server (control plane)
+  ingress {
+    description = "K8s API server"
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Kubelet API
+  ingress {
+    description = "Kubelet API"
+    from_port   = 10250
+    to_port     = 10250
+    protocol    = "tcp"[2;44H[?25h[?4m[?25l[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ ls -lrt
+[?2004ltotal 200
+-rw-rw-r-- 1 vadimgl vadimgl    354 Nov 29 23:10 main.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1003 Nov 30 20:33 outputs.tf
+-rw-rw-r-- 1 vadimgl vadimgl    250 Nov 30 22:53 vpc.tf
+-rw-rw-r-- 1 vadimgl vadimgl    370 Nov 30 22:54 subnets.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1306 Nov 30 23:21 security_groups.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1621 Nov 30 23:22 variables.tf
+-rw-rw-r-- 1 vadimgl vadimgl    320 Nov 30 23:33 terraform.tfvars
+-rw-rw-r-- 1 vadimgl vadimgl    221 Dec  1 01:15 providers.tf
+-rw-rw-r-- 1 vadimgl vadimgl    949 Dec  1 01:16 ec2.tf
+-rw-rw-r-- 1 vadimgl vadimgl  29492 Dec  1 23:39 terraform.tfstate.backup
+-rw-rw-r-- 1 vadimgl vadimgl    182 Dec  1 23:40 terraform.tfstate
+-rw-rw-r-- 1 vadimgl vadimgl    173 Dec  2 00:09 keypair.tf
+-rw-rw-r-- 1 vadimgl vadimgl 126976 Dec  2 00:14 terraform
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi vpc.tf 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"vpc.tf" 13 lines, 250 bytes[1;1Hdata "aws_availability_zones" "available" {
+  state = "available"
+}
+
+resource "aws_vpc" "main" {
+  cidr_block[11C= var.vpc_cidr
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "${var.project_name}-vpc"
+  }
+}
+[94m~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+[2;1H[1;1H
+
+[2;1H[m  state =
+
+[5;10H"[6;11H[?25l[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi terraform.tv[Kfvars 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"terraform.tfvars" 10 lines, 320 bytes[1;1Hregion[9C= "eu-central-1"
+
+# Replace this with YOUR actual Ubuntu 22.04 AMI from your region
+ami_id[9C= "ami-004e960cde33f9146"
+
+# The key pair you created in AWS EC2 →[6;41HKey Pairs
+ssh_key_name   = "vad-ec2-key"
+
+# Path on your machine to your public key
+public_key_path = "/home/vadimgl/.ssh/vadim-key.pub"
+[94m~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+
+
+
+
+[7;1H[?25l[m[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi terraform.tfvars 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"terraform.tfvars" 10 lines, 320 bytes[1;1Hregion[9C= "eu-central-1"
+
+# Replace this with YOUR actual Ubuntu 22.04 AMI from your region
+ami_id[9C= "ami-004e960cde33f9146"
+
+# The key pair you created in AWS EC2 →[6;41HKey Pairs
+ssh_key_name   = "vad-ec2-key"
+
+# Path on your machine to your public key
+public_key_path = "/home/vadimgl/.ssh/vadim-key.pub"
+[94m~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m[?25l[m[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi terraform.tfvars 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"terraform.tfvars" 10 lines, 320 bytes[1;1Hregion[9C= "eu-central-1"
+
+# Replace this with YOUR actual Ubuntu 22.04 AMI from your region
+ami_id[9C= "ami-004e960cde33f9146"
+
+# The key pair you created in AWS EC2 →[6;41HKey Pairs
+ssh_key_name   = "vad-ec2-key"
+
+# Path on your machine to your public key
+public_key_path = "/home/vadimgl/.ssh/vadim-key.pub"
+[94m~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+
+
+[?25l[6;29r[m[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [m[30;1H[K[6;1H[?25h[?25l[6;29r[29;1H
+[1;30r[29;1H[94m~                                                                                                                          [6;1H[?25h[5;1H[?25l[30;1H[m:[?25hx[?25l[?2004l[>4;m"terraform.tfvars" 8 lines, 237 bytes written[23;2t[23;1t
+[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ so my [K[K[K[K[K[Kvi terraform.tfvars 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"terraform.tfvars" 8 lines, 237 bytes[1;1Hregion[9C= "eu-central-1"
+
+# Replace this with YOUR actual Ubuntu 22.04 AMI from your region
+ami_id[9C= "ami-004e960cde33f9146"
+
+
+# Path on your machine to your public key
+public_key_path = "/home/vadimgl/.ssh/vadim-key.pub"
+[94m~                                                                                                                          [10;1H~                                                                                                                          [11;1H~                                                                                                                          [12;1H~                                                                                                                          [13;1H~                                                                                                                          [14;1H~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m[?25l[m[30;1H[K[30;1H:[?25hx[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi terraform.tfvars [10Pvpc.tf[C
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"vpc.tf" 13 lines, 250 bytes[1;1Hdata "aws_availability_zones" "available" {
+  state = "available"
+}
+
+resource "aws_vpc" "main" {
+  cidr_block[11C= var.vpc_cidr
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "${var.project_name}-vpc"
+  }
+}
+[94m~                                                                                                                          [15;1H~                                                                                                                          [16;1H~                                                                                                                          [17;1H~                                                                                                                          [18;1H~                                                                                                                          [19;1H~                                                                                                                          [20;1H~                                                                                                                          [21;1H~                                                                                                                          [22;1H~                                                                                                                          [23;1H~                                                                                                                          [24;1H~                                                                                                                          [25;1H~                                                                                                                          [26;1H~                                                                                                                          [27;1H~                                                                                                                          [28;1H~                                                                                                                          [29;1H~                                                                                                                          [1;1H[?25h[?4m
+
+
+
+[?25l[m[30;1H[K[30;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[30;1H[K[30;1H[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf validate[K[K[K[K[K[K[K[K[K[K[Kls -lrt
+[?2004ltotal 224
+-rw-rw-r-- 1 vadimgl vadimgl    354 Nov 29 23:10 main.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1003 Nov 30 20:33 outputs.tf
+-rw-rw-r-- 1 vadimgl vadimgl    250 Nov 30 22:53 vpc.tf
+-rw-rw-r-- 1 vadimgl vadimgl    370 Nov 30 22:54 subnets.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1306 Nov 30 23:21 security_groups.tf
+-rw-rw-r-- 1 vadimgl vadimgl   1621 Nov 30 23:22 variables.tf
+-rw-rw-r-- 1 vadimgl vadimgl    221 Dec  1 01:15 providers.tf
+-rw-rw-r-- 1 vadimgl vadimgl    949 Dec  1 01:16 ec2.tf
+-rw-rw-r-- 1 vadimgl vadimgl  29492 Dec  1 23:39 terraform.tfstate.backup
+-rw-rw-r-- 1 vadimgl vadimgl    182 Dec  1 23:40 terraform.tfstate
+-rw-rw-r-- 1 vadimgl vadimgl    173 Dec  2 00:09 keypair.tf
+-rw-rw-r-- 1 vadimgl vadimgl    237 Dec  2 00:20 terraform.tfvars
+-rw-rw-r-- 1 vadimgl vadimgl 147456 Dec  2 00:24 terraform
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ [7mterraform state list | grep igw[27mterraform state list | grep igw
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ igw.tfnigw.tfaigw.tfnigw.tfoigw.tf igw.tf
+[?2004l[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;56H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 7.2                                               igw.tf                                                        [1;122H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2d[?12l[?25h[?25l[1;69H(B[0;7m*[28d(B[m[K[1;122H[2dterraform state list | grep igw[?12l[?25h[?25l[?12l[?25h[?25l[28;55H(B[0;7m[ Undid paste ](B[m[1;69H(B[0;7m [122G(B[m[2d[K[?12l[?25h[?25l[1;69H(B[0;7m*[28d(B[m[K[1;122H[2dresource "aws_internet_gateway" "igw" {[3;3Hvpc_id = aws_vpc.main.id[5;3Htags = {[6;5HName = "${var.project_name}-igw"[7;3H}[8d}[?12l[?25h[?25l[?12l[?25h[?25l[28;50H(B[0;7m[ Recording a macro... ](B[m[1;120H(B[0;7mR (B[m[?12l[?25h[8d}[?25l[?12l[?25hx[?25l[?12l[?25h [?25l[28d(B[0;7mSave modified buffer?                                                                                                      [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: igw.tf(B[m[?12l[?25h[?25l[28;54H[1K (B[0;7m[ Writing... ](B[m[K[1;69H(B[0;7m [122G(B[m[28;54H(B[0;7m[ Wrote 7 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ 
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ nano igw.tfterraform state list | grep igwls -lrt[Kvi vpc.tf [10@terraform.tfvars[C[10Pvpc.tf[C[3Pls -lrtfg[Kvi security_groups.tf[14Pls -lrtvi terraform.tfstate[13Pls -lrtvi keypair.tf [7Pls -lrttf destroy[1Pvi vpc.tf[1Ptf applyaws ec2 describe-vpcs --profile vadim-student --region eu-central-1 --query 'Vpcs[*].VpcId'[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctf apply[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[Kstatue list|grep igw
+[?2004lTerraform has no command named "statue". Did you mean "state"?
+
+To see all of Terraform's top-level commands, run:
+  terraform -help
+
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf statue list|grep igw[1P[1P[1@e
+[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf state list|grep igw[1@u[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12Pnano igw.tf
+[?2004l[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;55H(B[0;7m[ Reading... ](B[m[28;54H(B[0;7m[ Read 7 lines ](B[m[H(B[0;7m  GNU nano 7.2                                               igw.tf                                                        [1;122H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2dresource "aws_internet_gateway" "igw" {[3;3Hvpc_id = aws_vpc.main.id[5;3Htags = {[6;5HName = "${var.project_name}-igw"[7;3H}[8d}[2d[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[A[?25l[?12l[?25hr[?25l[?12l[?25he[?25l[?12l[?25hs[?25l[?12l[?25ho[?25l[?12l[?25hu[?25l[?12l[?25hr[?25l[?12l[?25hc[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25h"[?25l[?12l[?25ha[?25l[?12l[?25hw[?25l[?12l[?25hs[?25l[?12l[?25h_[?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25ht[?25l[28d[K[?12l[?25h[2;19H[?25l[?12l[?25hr[?25l[?12l[?25hn[?25l[?12l[?25he[?25l[?12l[?25ht[?25l[?12l[?25h_[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5;11H[?25l[?12l[?25h[6;24H[?25l[?12l[?25h[?25l[28;50H(B[0;7m[ Recording a macro... ](B[m[1;120H(B[0;7mR (B[m[?12l[?25h[6;24H[?25l[1;69H(B[0;7m*[122G(B[m[?12l[?25h[6;24Hxct_name}-igw"[6;25H[?25l[28d(B[0;7mSave modified buffer?                                                                                                      [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: igw.tf(B[m[?12l[?25h[?25l[28;54H[1K (B[0;7m[ Writing... ](B[m[K[1;69H(B[0;7m [122G(B[m[28;54H(B[0;7m[ Wrote 7 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf validate
+[?2004l[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mReference to undeclared input variable[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m  on igw.tf line 5, in resource "aws_internet_gateway" "igw":
+[31m│[0m [0m   5:     Name = "${[4mvar.projexct_name[0m}-igw"[0m
+[31m│[0m [0m
+[31m│[0m [0mAn input variable with the name "projexct_name" has not been declared. Did you mean "project_name"?
+[31m╵[0m[0m
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf validatenano igw.tf
+[?2004l[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;55H(B[0;7m[ Reading... ](B[m[28;54H(B[0;7m[ Read 7 lines ](B[m[H(B[0;7m  GNU nano 7.2                                               igw.tf                                                        [1;122H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2dresource "aws_internet_gateway" "igw" {[3;3Hvpc_id = aws_vpc.main.id[5;3Htags = {[6;5HName = "${var.projexct_name}-igw"[7;3H}[8d}[2d[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5d[?25l[?12l[?25h[6d[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hN[?25l[?12l[?25ha[?25l[?12l[?25hm[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25h=[?25l[?12l[?25h [?25l[?12l[?25h"[?25l[?12l[?25h$[?25l[?12l[?25h{[?25l[?12l[?25hv[?25l[28d[K[?12l[?25h[6;17H[?25l[?12l[?25hr[?25l[?12l[?25h.[?25l[?12l[?25hp[?25l[?12l[?25hr[?25l[?12l[?25ho[?25l[?12l[?25hj[?25l[?12l[?25he[?25l[1;69H(B[0;7m*[122G(B[m[?12l[?25h[6;24Hxxct_name}-igw"[6;25H[?25l[?12l[?25hx[?25l[?12l[?25h[1Px[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25hect_name}-igw"[6;24H[?25l[?12l[?25h[?25l[28d(B[0;7mSave modified buffer?                                                                                                      [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: igw.tf(B[m[?12l[?25h[?25l[28;54H[1K (B[0;7m[ Writing... ](B[m[K[1;69H(B[0;7m [122G(B[m[28;54H(B[0;7m[ Wrote 7 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ nano igw.tftf validate
+[?2004l[32m[1mSuccess![0m The configuration is valid.
+[0m
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ tf apply
+[?2004l[0m[1mvar.ssh_key_name[0m
+  Name of the EC2 SSH key pair
+
+  [1mEnter a value:[0m [0m^C
+Interrupt received.
+Please wait for Terraform to exit or data loss may occur.
+Gracefully shutting down...
+
+
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m  on variables.tf line 20:
+[31m│[0m [0m  20: [4mvariable "ssh_key_name"[0m {[0m
+[31m│[0m [0m
+[31m│[0m [0mThe root module input variable "ssh_key_name" is not set, and has no default value. Use a -var or -var-file command line
+[31m│[0m [0margument to provide a value for this variable.
+[31m╵[0m[0m
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi variables.tf 
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"variables.tf" 73 lines, 1621 bytes[1;1H########################################
+# GLOBAL PROJECT VARIABLES
+########################################
+
+variable "project_name" {
+  description = "Name prefix for resources"
+  type[8C= string
+  default     = "retail-vadim"
+}
+
+variable "region" {
+  description = "AWS region to deploy Kubernetes"
+  type[8C= string
+}
+
+########################################
+# SSH KEY VARIABLES
+########################################
+
+variable "ssh_key_name" {
+  description = "Name of the EC2 SSH key pair"
+  type[8C= string
+}
+
+variable "public_key_path" {
+  description = "Path to the SSH public key file"
+  type[8C= string
+}[1;1H[?25h[?4m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[19;1H[18;1H[17;1H
+
+
+[?25l[20;29r[29;1H
+[1;30r[29;1H########################################[30;1H[K[20;3H[?25h[?25l[20;29r[29;1H
+[1;30r[29;1H# EC2 CONFIGURATION[20;3H[?25h[?25l[20;29r[29;1H
+[1;30r[29;1H########################################[20;1H[?25h[?25l[20;29r[29;1H
+[1;30r[20;1H[?25h[?25l[30;1H:[?25hx[?25l[?2004l[>4;m"variables.tf" 69 lines, 1523 bytes written[23;2t[23;1t
+[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ vi variables.tf [8Ptf apply
+[?2004l[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 0s [id=eu-central-1][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # aws_instance.control_plane[0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "control_plane" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "retail-vadim-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-control-plane"
+          [32m+[0m[0m "role" = "control-plane"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-control-plane"
+          [32m+[0m[0m "role" = "control-plane"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_instance.worker_nodes[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "worker_nodes" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "retail-vadim-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-1"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-1"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_instance.worker_nodes[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "worker_nodes" {
+      [32m+[0m[0m ami                                  = "ami-004e960cde33f9146"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m cpu_core_count                       = (known after apply)
+      [32m+[0m[0m cpu_threads_per_core                 = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t2.medium"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "retail-vadim-key"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-2"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-worker-2"
+          [32m+[0m[0m "role" = "worker"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data                            = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_internet_gateway.igw[0m will be created
+[0m  [32m+[0m[0m resource "aws_internet_gateway" "igw" {
+      [32m+[0m[0m arn      = (known after apply)
+      [32m+[0m[0m id       = (known after apply)
+      [32m+[0m[0m owner_id = (known after apply)
+      [32m+[0m[0m tags     = {
+          [32m+[0m[0m "Name" = "retail-vadim-igw"
+        }
+      [32m+[0m[0m tags_all = {
+          [32m+[0m[0m "Name" = "retail-vadim-igw"
+        }
+      [32m+[0m[0m vpc_id   = (known after apply)
+    }
+
+[1m  # aws_key_pair.key[0m will be created
+[0m  [32m+[0m[0m resource "aws_key_pair" "key" {
+      [32m+[0m[0m arn             = (known after apply)
+      [32m+[0m[0m fingerprint     = (known after apply)
+      [32m+[0m[0m id              = (known after apply)
+      [32m+[0m[0m key_name        = "retail-vadim-key"
+      [32m+[0m[0m key_name_prefix = (known after apply)
+      [32m+[0m[0m key_pair_id     = (known after apply)
+      [32m+[0m[0m key_type        = (known after apply)
+      [32m+[0m[0m public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCiti+/M8wDypByvb3kDdrS+Lr9zbxI3mvhM/w0tlNP7ZvBbUvouLkRL+jd4SFGjCigej9wya7IgUpYAyu1CffWPtH0rpV93dR8u7B5TbNxKBA7yjR3kzlnFPf0x12u0e4Kh1cQPxMWO7e4thUpLqcCbFuiGOlgZZsSWBRkfW8WWomlsFeSn+Hj3pmoWe+XbJr5Ae7FrghLxH9ZJ8bdnWZv5EDZtGUu1UP4BCjjK8C4BDU7WGGboyxQ/Iq+Aql3LObruk4QbP5zM4lRthYXyMVVgw/bxzzsITBACnZkSLCFw5/niC+962NR8t7tEF1BWr6jojMynYs2dp8JwA0eyUFZ4nsg6z7hvE+JoOwDlYZTAwOyJLm/Z8+8c4qwzyvY7AFfejsQAow2pfr2VoNrSfzq2T/X5FcFVvRrR8c6ozB5IBUWR8cJ25RV4bKgDdDLe0fZZWkXZApEYd+NkiEGb2Xa9HwYd5VUDcyFnvHdKEd3kGubjMc9XNoq3IomZKv6xRP75BuHmiRm653nkWmJ85AMX81J54RgGWC1tKoPeZ2zYBz1lp+/lMR5H4oWri6Ra+q6nneeyNpw3QSR66yw+T4lEPr7/zZ1NcO+N2B6AzdCj2tucHO2gmd0Urf6tM2cOVFE8xoGlbI+pEBneIumwWtS0rDb0PpmXGJ7zL1Ei8rBQ== vadimgl@Devops2"
+      [32m+[0m[0m tags            = {
+          [32m+[0m[0m "Name" = "retail-vadim-keypair"
+        }
+      [32m+[0m[0m tags_all        = {
+          [32m+[0m[0m "Name" = "retail-vadim-keypair"
+        }
+    }
+
+[1m  # aws_security_group.vadim_nodes[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "vadim_nodes" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Security group for Kubernetes control-plane and worker nodes"
+      [32m+[0m[0m egress                 = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "-1"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 0
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            },
+        ]
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "K8s API server"
+              [32m+[0m[0m from_port        = 6443
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 6443
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "Kubelet API"
+              [32m+[0m[0m from_port        = 10250
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 10250
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "NodePort services"
+              [32m+[0m[0m from_port        = 30000
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 32767
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = "SSH access"
+              [32m+[0m[0m from_port        = 22
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 22
+            },
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "10.20.0.0/16",
+                ]
+              [32m+[0m[0m description      = "All internal VPC traffic"
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "tcp"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 65535
+            },
+        ]
+      [32m+[0m[0m name                   = "retail-vadim-vadim-nodes-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "retail-vadim-vadim-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "retail-vadim-vadim-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_subnet.public[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.1.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.2.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-2"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-2"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[2][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "eu-central-1c"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.20.3.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-3"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "retail-vadim-public-3"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_vpc.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc" "main" {
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m cidr_block                           = "10.20.0.0/16"
+      [32m+[0m[0m default_network_acl_id               = (known after apply)
+      [32m+[0m[0m default_route_table_id               = (known after apply)
+      [32m+[0m[0m default_security_group_id            = (known after apply)
+      [32m+[0m[0m dhcp_options_id                      = (known after apply)
+      [32m+[0m[0m enable_dns_hostnames                 = true
+      [32m+[0m[0m enable_dns_support                   = true
+      [32m+[0m[0m enable_network_address_usage_metrics = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_tenancy                     = "default"
+      [32m+[0m[0m ipv6_association_id                  = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                      = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_network_border_group = (known after apply)
+      [32m+[0m[0m main_route_table_id                  = (known after apply)
+      [32m+[0m[0m owner_id                             = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "retail-vadim-vpc"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "retail-vadim-vpc"
+        }
+    }
+
+[1mPlan:[0m 10 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m control_plane_private_ip = (known after apply)
+  [32m+[0m[0m control_plane_public_ip  = (known after apply)
+  [32m+[0m[0m public_subnet_ids        = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+  [32m+[0m[0m vpc_id                   = (known after apply)
+  [32m+[0m[0m worker_nodes_private_ips = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+  [32m+[0m[0m worker_nodes_public_ips  = [
+      [32m+[0m[0m (known after apply),
+      [32m+[0m[0m (known after apply),
+    ]
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1maws_key_pair.key: Creating...[0m[0m
+[0m[1maws_vpc.main: Creating...[0m[0m
+[0m[1maws_key_pair.key: Creation complete after 1s [id=retail-vadim-key][0m
+[0m[1maws_vpc.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_vpc.main: Creation complete after 13s [id=vpc-09ec9548b4b79524a][0m
+[0m[1maws_internet_gateway.igw: Creating...[0m[0m
+[0m[1maws_subnet.public[1]: Creating...[0m[0m
+[0m[1maws_subnet.public[0]: Creating...[0m[0m
+[0m[1maws_subnet.public[2]: Creating...[0m[0m
+[0m[1maws_security_group.vadim_nodes: Creating...[0m[0m
+[0m[1maws_internet_gateway.igw: Creation complete after 1s [id=igw-0a4e460eb4249a6c8][0m
+[0m[1maws_security_group.vadim_nodes: Creation complete after 4s [id=sg-070ebf56978c0fdbb][0m
+[0m[1maws_subnet.public[0]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[1]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[2]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[2]: Creation complete after 11s [id=subnet-074eb544457bb0d1a][0m
+[0m[1maws_subnet.public[1]: Creation complete after 11s [id=subnet-04937078f25d05aa5][0m
+[0m[1maws_subnet.public[0]: Creation complete after 11s [id=subnet-0ac6840b4865239fd][0m
+[0m[1maws_instance.worker_nodes[0]: Creating...[0m[0m
+[0m[1maws_instance.control_plane: Creating...[0m[0m
+[0m[1maws_instance.worker_nodes[1]: Creating...[0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_instance.control_plane: Creation complete after 14s [id=i-066583d5d9a71db9f][0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[1]: Creation complete after 33s [id=i-081dfcefb97cd8d08][0m
+[0m[1maws_instance.worker_nodes[0]: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_instance.worker_nodes[0]: Creation complete after 44s [id=i-0a653d2f574bb3047][0m
+[0m[1m[32m
+Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
+[0m[0m[1m[32m
+Outputs:
+
+[0mcontrol_plane_private_ip = "10.20.1.129"
+control_plane_public_ip = "3.71.175.23"
+public_subnet_ids = [
+  "subnet-0ac6840b4865239fd",
+  "subnet-04937078f25d05aa5",
+  "subnet-074eb544457bb0d1a",
+]
+vpc_id = "vpc-09ec9548b4b79524a"
+worker_nodes_private_ips = [
+  "10.20.2.107",
+  "10.20.3.81",
+]
+worker_nodes_public_ips = [
+  "3.126.130.5",
+  "3.69.29.169",
+]
+[?2004hvadimgl@Devops2:~/RetailStore/retail-store-sample-app/terraform$ [7mterraform state list | grep internet_gateway[27mterraform state list | grep internet_gateway
+[?2004laws_[01;31m[

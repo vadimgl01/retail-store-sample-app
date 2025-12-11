@@ -1,0 +1,78 @@
+#!/bin/bash -xe
+
+echo "==== CONTROL-PLANE START ===="
+
+# BUCKET variable is assumed to be exported by the Terraform user_data environment.
+
+# Get the private IP of the instance
+MASTER_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+
+# The following line uses the MASTER_IP variable inside the shell script.
+# If you are using an older shell version or running this interactively, 
+# you might need to use the full IP instead of the variable if curl fails.
+
+#############################################
+# 1. kubeadm init
+#############################################
+echo "--- Initializing Kubeadm cluster ---"
+# Using the standard Pod Network CIDR 192.168.0.0/16
+sudo kubeadm init \
+    --pod-network-cidr=192.168.0.0/16 \
+    --apiserver-advertise-address=${MASTER_IP} \
+    --node-name control-plane \
+    --upload-certs
+
+#############################################
+# 2. Configure kubeconfig
+#############################################
+echo "--- Configuring kubectl ---"
+
+# 2a. Configure for the root user (the user running this script)
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# 2b. Configure for the default non-root user (e.g., 'ubuntu')
+DEFAULT_USER=$(ls /home | head -n 1) 
+if [ -n "$DEFAULT_USER" ]; then
+    mkdir -p /home/$DEFAULT_USER/.kube
+    sudo cp -i /etc/kubernetes/admin.conf /home/$DEFAULT_USER/.kube/config
+    # Set the correct ownership recursively
+    sudo chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER/.kube
+fi
+
+#############################################
+# 3. Wait for API Server (Critical Fix for Race Condition)
+#############################################
+echo "--- Waiting for core API Server components to be ready ---"
+# This ensures the API server is listening before applying the CNI manifest.
+# It waits up to 5 minutes for the kube-apiserver static pod to be Ready.
+kubectl wait --for=condition=ready pod -l component=kube-apiserver --timeout=5m -n kube-system
+
+#############################################
+# 4. Install Calico CNI
+#############################################
+echo "--- Installing Calico CNI ---"
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
+
+#############################################
+# 5. Create join script and upload to S3
+#############################################
+echo "--- Uploading join script to S3 ---"
+# Retrieve the full join command from kubeadm (includes token and hash)
+JOIN_CMD=$(sudo kubeadm token create --print-join-command 2>/dev/null)
+
+cat <<EOF > /tmp/join.sh
+#!/bin/bash -xe
+# This script joins a worker node to the Kubernetes cluster
+# The retry logic is in the worker.sh execution script, not here.
+sudo ${JOIN_CMD}
+EOF
+
+sudo chmod +x /tmp/join.sh
+
+# Upload the script to the S3 bucket (BUCKET variable is exported from user_data)
+aws s3 cp /tmp/join.sh s3://${BUCKET}/join.sh
+
+echo "Control plane initialized and join.sh uploaded."
+echo "==== CONTROL-PLANE COMPLETE ===="
