@@ -43,7 +43,7 @@ jobs:
     - name: Build and Push Docker image
       if: steps.changes.outputs.src == 'true'
       env:
-	ECR_REPOSITORY: retail-vadim-store-${{ matrix.service }}
+        ECR_REPOSITORY: retail-vadim-store-${{ matrix.service }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
         echo "Building ${{ matrix.service }}..."
