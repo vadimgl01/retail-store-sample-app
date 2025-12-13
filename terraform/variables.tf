@@ -43,3 +43,9 @@ variable "public_subnets" {
   description = "List of CIDR blocks for public subnets"
   type        = list(string)
 }
+
+#=====================ECR===============
+variable "ecr_repos" {
+  description = "List of microservice repositories to create"
+  type        = list(string)
+}
