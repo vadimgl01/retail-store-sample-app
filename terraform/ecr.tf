@@ -1,4 +1,4 @@
-resource "aws_ecr_repository" "vadim_retail_store_ecr_repos" {
+resource "aws_ecr_repository" "retail_vadim_store_ecr_repos" {
   count                = length(var.ecr_repos)
   name                 = var.ecr_repos[count.index]
   image_tag_mutability = "MUTABLE"
@@ -10,5 +10,5 @@ resource "aws_ecr_repository" "vadim_retail_store_ecr_repos" {
 }
 
 output "ecr_repo_urls" {
-  value = aws_ecr_repository.vadim_retail_store_ecr_repos[*].repository_url
+  value = aws_ecr_repository.retail_vadim_store_ecr_repos[*].repository_url
 }

@@ -1,0 +1,37 @@
+############################################
+# POST-PROVISIONING: INSTALL HELM DEPENDENCIES
+############################################
+resource "null_resource" "install_dependencies" {
+  # This ensures the script runs only after the control_plane instance is fully created.
+  depends_on = [
+    aws_instance.control_plane,
+  ]
+
+  # Provisioner to copy the script
+  provisioner "file" {
+    source      = "terraform/scripts/install-dependencies.sh" # Adjust path if needed
+    destination = "/tmp/install-dependencies.sh"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu" # Use your correct user if it's not 'ubuntu'
+      private_key = file(var.ssh_key_name) # Assuming ssh_key_name is the path to the key
+      host        = aws_instance.control_plane.public_ip
+    }
+  }
+
+  # Provisioner to execute the script
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/install-dependencies.sh",
+      "/tmp/install-dependencies.sh",
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu" # Use your correct user if it's not 'ubuntu'
+      private_key = file(var.ssh_key_name)
+      host        = aws_instance.control_plane.public_ip
+    }
+  }
+}

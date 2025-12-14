@@ -49,3 +49,8 @@ variable "ecr_repos" {
   description = "List of microservice repositories to create"
   type        = list(string)
 }
+
+variable "project_prefix" {
+  description = "A unique prefix for all AWS resources (e.g., project-user)."
+  type        = string
+}
