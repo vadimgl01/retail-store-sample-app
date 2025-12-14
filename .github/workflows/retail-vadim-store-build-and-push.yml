@@ -46,7 +46,7 @@ jobs:
         ECR_REPOSITORY: retail-vadim-store-${{ matrix.service }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        echo "Building  ${{ matrix.service }}..."
+        echo "Building ${{ matrix.service }}..."
         cd src/${{ matrix.service }}
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
