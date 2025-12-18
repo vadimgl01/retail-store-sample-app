@@ -13,3 +13,11 @@ provider "aws" {
   region  = var.region
   profile = "vadim-student"
 }
+
+provider "kubernetes" {
+  # Forces the provider to use the default path
+  config_path    = "~/.kube/config" 
+  
+  # Crucial: Forces the provider to use the working context
+  config_context = "kubernetes-admin@kubernetes" 
+}

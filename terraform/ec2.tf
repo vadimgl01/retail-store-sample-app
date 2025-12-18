@@ -2,12 +2,12 @@
 # CONTROL PLANE NODE
 ############################################
 resource "aws_instance" "control_plane" {
-  ami                      = var.ami_id
-  instance_type            = "t3.medium"
-  subnet_id                = aws_subnet.public[0].id
-  vpc_security_group_ids   = [aws_security_group.vadim_nodes.id]
-  key_name                 = var.ssh_key_name
-  iam_instance_profile     = aws_iam_instance_profile.ec2_profile.name
+  ami                    = var.ami_id
+  instance_type          = "t3.medium"
+  subnet_id              = aws_subnet.public[0].id
+  vpc_security_group_ids = [aws_security_group.vadim_nodes.id]
+  key_name               = var.ssh_key_name
+  iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
 
   user_data = <<EOF
 #!/bin/bash -xe
@@ -66,13 +66,13 @@ EOF
 # WORKER NODES
 ############################################
 resource "aws_instance" "worker_nodes" {
-  count                    = var.worker_count
-  ami                      = var.ami_id
-  instance_type            = "t3.medium"
-  subnet_id                = aws_subnet.public[count.index].id
-  vpc_security_group_ids   = [aws_security_group.vadim_nodes.id]
-  key_name                 = var.ssh_key_name
-  iam_instance_profile     = aws_iam_instance_profile.ec2_profile.name
+  count                  = var.worker_count
+  ami                    = var.ami_id
+  instance_type          = "t3.medium"
+  subnet_id              = aws_subnet.public[count.index].id
+  vpc_security_group_ids = [aws_security_group.vadim_nodes.id]
+  key_name               = var.ssh_key_name
+  iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
 
   user_data = <<EOF
 #!/bin/bash -xe

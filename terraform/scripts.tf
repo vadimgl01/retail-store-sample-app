@@ -1,7 +1,7 @@
 locals {
-  kube_common    = file("${path.module}/scripts/kube-common.sh")
-  control_plane  = file("${path.module}/scripts/control-plane.sh")
-  worker         = file("${path.module}/scripts/worker.sh")
+  kube_common   = file("${path.module}/scripts/kube-common.sh")
+  control_plane = file("${path.module}/scripts/control-plane.sh")
+  worker        = file("${path.module}/scripts/worker.sh")
 }
 
 resource "aws_s3_object" "kube_common" {

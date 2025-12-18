@@ -33,7 +33,7 @@ resource "aws_iam_policy" "s3_bootstrap_policy" {
         Action = [
           "s3:GetObject",
           "s3:ListBucket",
-	  "s3:PutObject"
+          "s3:PutObject"
         ],
         Resource = [
           aws_s3_bucket.bootstrap.arn,
@@ -135,4 +135,36 @@ output "ci_aws_secret_access_key" {
   description = "AWS Secret Access Key for CI/CD User (Save as GitHub Secret AWS_SECRET_ACCESS_KEY)"
   value       = aws_iam_access_key.ci_github_actions_key.secret
   sensitive   = true
+}
+
+resource "aws_iam_role_policy_attachment" "ebs_csi_driver" {
+  role       = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+}
+
+resource "aws_iam_role_policy" "ebs_passrole_policy" {
+  name = "EBS-CSI-Controller-PassRole"
+  role = aws_iam_role.ec2_role.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "iam:PassRole",
+        ]
+        Resource = [
+          aws_iam_role.ec2_role.arn
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ec2:Describe*",
+        ]
+        Resource = "*"
+      },
+    ]
+  })
 }
