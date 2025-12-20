@@ -54,3 +54,10 @@ variable "project_prefix" {
   description = "A unique prefix for all AWS resources (e.g., project-user)."
   type        = string
 }
+
+variable "aws_account_id" {
+  description = "Your 12-digit AWS Account ID"
+  type        = string
+  # You can find this in the top-right of your AWS Console
+  # default     = "630019796862" 
+}
